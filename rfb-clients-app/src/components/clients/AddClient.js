@@ -22,7 +22,7 @@ class AddClient extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const newClient = this.state;
+    const newClient = { ...this.state };
     const { firestore, history } = this.props;
 
     // make balance 0 if left blank
