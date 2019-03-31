@@ -56,8 +56,7 @@ class Clients extends Component {
               {clients.map(client => (
                 <tr key={client.id}>
                   <td>
-                    {client.firstName}
-                    {client.lastName}
+                    {client.firstName} {client.lastName}
                   </td>
                   <td> {client.email}</td>
                   <td> ${parseFloat(client.balance).toFixed(2)}</td>
@@ -83,7 +82,7 @@ class Clients extends Component {
 }
 
 export default compose(
-  firestoreConnect([{ collection: "Clients" }]),
+  firestoreConnect([{ collection: "Clients", orderBy: "lastName" }]),
   connect(state => ({
     clients: state.firestore.ordered.Clients
   }))
